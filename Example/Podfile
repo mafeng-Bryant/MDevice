@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MDevice_Example' do
+  pod 'MDevice', :path => '../'
+
+  target 'MDevice_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
