@@ -1,0 +1,6 @@
+framework module MDevice {
+  umbrella header "MDevice-umbrella.h"
+
+  export *
+  module * { export * }
+}

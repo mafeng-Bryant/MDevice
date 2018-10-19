@@ -1,0 +1,16 @@
+PODS:
+  - MDevice (0.1.0)
+
+DEPENDENCIES:
+  - MDevice (from `../`)
+
+EXTERNAL SOURCES:
+  MDevice:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MDevice: ef93d344a37634987fadfa2c7ce91c18c0355abd
+
+PODFILE CHECKSUM: 38db3895f0e0c76d6991569d0e7088a140bf7821
+
+COCOAPODS: 1.5.3
