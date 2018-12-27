@@ -2,7 +2,7 @@
 //  MDevice.h
 //  MDevice_Example
 //
-//  Created by patpat on 2018/10/19.
+//  Created by mafeng on 2018/10/19.
 //  Copyright © 2018年 1499603656@qq.com. All rights reserved.
 //
 
@@ -84,7 +84,6 @@
  */
 + (NSDictionary*)getDeviceCountryInfo;
 
-//33333
 
 @end
 
