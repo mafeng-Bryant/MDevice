@@ -11,7 +11,58 @@
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 
+#define MFFormatString(string,replaceString) (string == nil || (NSNull *)string == [NSNull null])?replaceString:string//当string未nil，或null时格式化为replaceString
+static NSString * const kMFDeviceUUID   = @"kechain.deviceuuid";
+
 @implementation MDevice
+
++ (NSDictionary *)deviceInfo
+{
+    NSDictionary *otherInfo = @{@"mode":MFFormatString([MDevice deviceModel],@"")};
+    return  @{@"deviceinfo":[MDevice toJsonString],@"device_id":[self deviceUUID],@"operation_system":MFFormatString([MDevice systemName],@""),@"device_type":MFFormatString([MDevice deviceType], @""),@"os_version":MFFormatString([MDevice systemVersion], @"")};
+}
+
++ (NSString *)deviceUUID
+{
+    NSString *uuid = [MFStoreHelper getSystemValueForKey:kMFDeviceUUID];
+    if (uuid.length<=0) {
+        [MFStoreHelper systemStoreValue:@"" forKey:kMFDeviceUUID];
+    }
+//
+//    if (!isValidString(uuid)) {
+//     //   uuid = [NSString createCUID];
+//        [MFStoreHelper systemStoreValue:@"" forKey:kMFDeviceUUID];
+//    }
+    return uuid;
+}
+
++ (NSString*)country
+{
+    NSDictionary* info = [MDevice getDeviceCountryInfo];
+    if (info.count>0) {
+        NSString* countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+        return countryCode;
+    }
+    return @"";
+}
+
++ (NSDictionary*)getDeviceCountryInfo
+{
+    NSArray *countryCodes = [NSLocale ISOCountryCodes];
+        NSMutableArray *countries = [NSMutableArray arrayWithCapacity:countryCodes.count];
+        for (NSString *countryCode in countryCodes)
+        {
+            NSString *identifier = [NSLocale localeIdentifierFromComponents: [NSDictionary dictionaryWithObject: countryCode forKey: NSLocaleCountryCode]];
+            NSString *country = [[NSLocale currentLocale] displayNameForKey: NSLocaleIdentifier value: identifier];
+            if (country.length>0) {
+                [countries addObject: country];
+            }
+        }
+        if (countries.count>0) {
+            return [[NSDictionary alloc] initWithObjects:countries forKeys:countryCodes];
+        }
+        return  [[NSDictionary alloc] init];
+}
 
 + (NSString *)infos
 {
@@ -64,16 +115,10 @@
     return infos;
 }
 
-+ (NSString *)country
-{
-    return [MLocalization country];
-}
-
 + (NSString *)currency
 {
     return [MLocalization currency];
 }
-
 
 + (NSString *)language
 {
@@ -547,5 +592,17 @@
         return nil;
     }
 }
+
++ (NSString *)toJsonString
+{
+    if ([NSJSONSerialization isValidJSONObject:self]){
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:0 error:&error];
+        NSString *json =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        return json;
+    }
+    return nil;
+}
+
 
 @end

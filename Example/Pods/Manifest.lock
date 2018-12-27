@@ -1,16 +1,28 @@
 PODS:
-  - MDevice (0.1.0)
+  - MDevice (1.0.0):
+    - MFStoreHelperKit (~> 1.0.3)
+  - MFStoreHelperKit (1.0.3):
+    - SFHFKeychainUtils (~> 1.0.0)
+  - SFHFKeychainUtils (1.0.0)
 
 DEPENDENCIES:
   - MDevice (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SFHFKeychainUtils
+  https://github.com/mafeng-Bryant/Specs:
+    - MFStoreHelperKit
 
 EXTERNAL SOURCES:
   MDevice:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MDevice: ef93d344a37634987fadfa2c7ce91c18c0355abd
+  MDevice: 09e23cce137c648621e1adf2bda3a5599a7057a3
+  MFStoreHelperKit: c61f1a2c4f0c69fd7912ca447f8551f868fa1071
+  SFHFKeychainUtils: a4e064aedb7a5ada3d5219152d45f53cebc16507
 
-PODFILE CHECKSUM: 38db3895f0e0c76d6991569d0e7088a140bf7821
+PODFILE CHECKSUM: 07406c8ad77d195aeafbe778d44905e3d2b0aacb
 
 COCOAPODS: 1.5.3

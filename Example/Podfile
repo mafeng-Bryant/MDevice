@@ -1,5 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/mafeng-Bryant/Specs.git'
 use_frameworks!
-
 target 'MDevice_Example' do
   pod 'MDevice', :path => '../'
 
