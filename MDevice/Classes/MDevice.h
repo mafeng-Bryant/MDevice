@@ -13,7 +13,9 @@
 #import "MNetwork.h"
 #import "MFStoreHelper.h"
 
+
 @interface MDevice : NSObject
+
 
 /**
  * 获取设备详细信息
