@@ -28,11 +28,6 @@ static NSString * const kMFDeviceUUID   = @"kechain.deviceuuid";
     if (uuid.length<=0) {
         [MFStoreHelper systemStoreValue:@"" forKey:kMFDeviceUUID];
     }
-//
-//    if (!isValidString(uuid)) {
-//     //   uuid = [NSString createCUID];
-//        [MFStoreHelper systemStoreValue:@"" forKey:kMFDeviceUUID];
-//    }
     return uuid;
 }
 

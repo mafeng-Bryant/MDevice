@@ -66,7 +66,7 @@
 		869153FA8D289F0B54D4E857 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D59FB26F55D64BC3F6EA26AA /* Pods-MDevice_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDevice_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MDevice_Example/Pods-MDevice_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		D863F8622EB0121C284F1E59 /* MDevice.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MDevice.podspec; path = ../MDevice.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D863F8622EB0121C284F1E59 /* MDevice.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MDevice.podspec; path = ../MDevice.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "1499603656@qq.com";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 6AJP77DB44;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -489,6 +492,7 @@
 			baseConfigurationReference = D59FB26F55D64BC3F6EA26AA /* Pods-MDevice_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6AJP77DB44;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDevice/MDevice-Prefix.pch";
 				INFOPLIST_FILE = "MDevice/MDevice-Info.plist";
@@ -504,6 +508,7 @@
 			baseConfigurationReference = 290C1C260947F01DB487C1D8 /* Pods-MDevice_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6AJP77DB44;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDevice/MDevice-Prefix.pch";
 				INFOPLIST_FILE = "MDevice/MDevice-Info.plist";
