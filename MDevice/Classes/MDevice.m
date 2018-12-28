@@ -18,7 +18,6 @@ static NSString * const kMFDeviceUUID   = @"kechain.deviceuuid";
 
 + (NSDictionary *)deviceInfo
 {
-    NSDictionary *otherInfo = @{@"mode":MFFormatString([MDevice deviceModel],@"")};
     return  @{@"deviceinfo":[MDevice toJsonString],@"device_id":[self deviceUUID],@"operation_system":MFFormatString([MDevice systemName],@""),@"device_type":MFFormatString([MDevice deviceType], @""),@"os_version":MFFormatString([MDevice systemVersion], @"")};
 }
 
