@@ -10,6 +10,7 @@
 #import <sys/utsname.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import <CommonCrypto/CommonDigest.h>
 
 #define MFFormatString(string,replaceString) (string == nil || (NSNull *)string == [NSNull null])?replaceString:string//当string未nil，或null时格式化为replaceString
 static NSString * const kMFDeviceUUID   = @"kechain.deviceuuid";
@@ -24,11 +25,41 @@ static NSString * const kMFDeviceUUID   = @"kechain.deviceuuid";
 + (NSString *)deviceUUID
 {
     NSString *uuid = [MFStoreHelper getSystemValueForKey:kMFDeviceUUID];
-    if (uuid.length<=0) {
-        [MFStoreHelper systemStoreValue:@"" forKey:kMFDeviceUUID];
+    if (uuid.length <=0) {
+        uuid = [MDevice createCUID];
+        [MFStoreHelper systemStoreValue:uuid forKey:kMFDeviceUUID];
     }
     return uuid;
 }
+
++(NSString *)createCUID
+{
+    NSString *prefix = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
+    NSString *  result;
+    CFUUIDRef   uuid;
+    CFStringRef uuidStr;
+    uuid = CFUUIDCreate(NULL);
+    uuidStr = CFUUIDCreateString(NULL, uuid);
+    result =[NSString stringWithFormat:@"%@-%@",prefix,uuidStr];
+    CFRelease(uuidStr);
+    CFRelease(uuid);
+    return [MDevice toMD5:result];
+}
+
++ (NSString *)toMD5:(NSString*)string
+{
+    const char* input = [string UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(input, (CC_LONG)strlen(input), result);
+    
+    NSMutableString *digest = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for (NSInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [digest appendFormat:@"%02x", result[i]];
+    }
+    
+    return digest;
+}
+
 
 + (NSString*)country
 {

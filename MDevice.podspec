@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MDevice'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'MDevice'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
