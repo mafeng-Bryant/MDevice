@@ -5,7 +5,6 @@
 //  Created by mafeng on 2018/10/19.
 //  Copyright © 2018年 1499603656@qq.com. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import "MDiskInfo.h"
 #import "MMemoryInfo.h"
@@ -13,9 +12,7 @@
 #import "MNetwork.h"
 #import "MFStoreHelper.h"
 
-
 @interface MDevice : NSObject
-
 
 /**
  * 获取设备详细信息
